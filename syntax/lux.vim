@@ -115,8 +115,8 @@ syn match luxOp /[+\-*/%&|^~!<>]/
 syn match luxOp /->/
 syn match luxOp /\.\.\./
 syn match luxOp /\.\.\=/
-syn match luxOp /\?\?/
-syn match luxOp /\?/
+syn match luxOp /??/
+syn match luxOp /?/
 syn match luxOp /=\ze[^=]/
 hi def link luxOp Operator
 
