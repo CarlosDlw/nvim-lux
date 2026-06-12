@@ -1,10 +1,10 @@
-; Tree-sitter highlight queries for Lux
-; These queries require a compiled tree-sitter-lux parser.
+; Tree-sitter highlight queries for lucis
+; These queries require a compiled tree-sitter-lucis parser.
 ; See: https://tree-sitter.github.io/tree-sitter/creating-parsers
 ;
-; The parser grammar source lives in grammar/ (LuxParser.g4 / LuxLexer.g4).
-; Until an official tree-sitter parser is published, nvim-lux falls back
-; to the Vim regex syntax in syntax/lux.vim.
+; The parser grammar source lives in grammar/ (lucisParser.g4 / lucisLexer.g4).
+; Until an official tree-sitter parser is published, nvim-lucis falls back
+; to the Vim regex syntax in syntax/lucis.vim.
 
 ; ── Keywords ──────────────────────────────────────────────────────────────────
 [

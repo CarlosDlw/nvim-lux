@@ -1,12 +1,12 @@
-# nvim-lux
+# nvim-lucis
 
-Neovim plugin for the [Lux programming language](https://github.com/CarlosDlw/Lux).
+Neovim plugin for the [lucis programming language](https://github.com/CarlosDlw/lucis).
 
 Provides:
-- Filetype detection for `.lx` files
+- Filetype detection for `.lc` files
 - Syntax highlighting (Vim regex, zero dependencies)
 - Tree-sitter highlight queries (ready for when a parser is available)
-- LSP integration via `lux lsp` — diagnostics, hover, completion, go-to-definition, formatting
+- LSP integration via `lucis lsp` — diagnostics, hover, completion, go-to-definition, formatting
 - Sensible buffer defaults (indent, comments, bracket pairs)
 
 ---
@@ -16,7 +16,7 @@ Provides:
 | Requirement | Notes |
 |---|---|
 | Neovim ≥ 0.10 | `vim.lsp.start` API |
-| `lux` binary in `$PATH` | Provides `lux lsp` language server |
+| `lucis` binary in `$PATH` | Provides `lucis lsp` language server |
 | `nvim-lspconfig` (optional) | Preferred; falls back to native `vim.lsp` |
 
 ---
@@ -29,8 +29,8 @@ Minimal — just filetype + LSP:
 
 ```lua
 {
-  "CarlosDlw/nvim-lux",
-  ft = "lux",
+  "CarlosDlw/nvim-lucis",
+  ft = "lucis",
   opts = {},
 }
 ```
@@ -39,30 +39,30 @@ Full options:
 
 ```lua
 {
-  "CarlosDlw/nvim-lux",
-  ft = "lux",
+  "CarlosDlw/nvim-lucis",
+  ft = "lucis",
   opts = {
     lsp = {
       enabled  = true,
-      cmd      = { "lux", "lsp" },       -- path to the lux binary
-      root_markers = { ".git", "*.lx" }, -- project root detection
+      cmd      = { "lucis", "lsp" },       -- path to the lucis binary
+      root_markers = { ".git", "*.lc" }, -- project root detection
       settings     = {},                 -- extra settings for the server
       capabilities = nil,                -- override LSP capabilities
     },
-    format_on_save = false,              -- auto-format with lux lsp on save
+    format_on_save = false,              -- auto-format with lucis lsp on save
   },
 }
 ```
 
 ### LazyVim extra
 
-In your LazyVim config (`~/.config/nvim/lua/plugins/lux.lua`):
+In your LazyVim config (`~/.config/nvim/lua/plugins/lucis.lua`):
 
 ```lua
 return {
   {
-    "CarlosDlw/nvim-lux",
-    ft = "lux",
+    "CarlosDlw/nvim-lucis",
+    ft = "lucis",
     opts = {},
     -- Optional: wire up with blink.cmp or nvim-cmp capabilities
     config = function(_, opts)
@@ -71,7 +71,7 @@ return {
         opts.lsp = opts.lsp or {}
         opts.lsp.capabilities = blink.get_lsp_capabilities()
       end
-      require("lux").setup(opts)
+      require("lucis").setup(opts)
     end,
   },
 }
@@ -84,17 +84,17 @@ built-in LSP setup and configure it manually:
 
 ```lua
 {
-  "CarlosDlw/nvim-lux",
-  ft = "lux",
+  "CarlosDlw/nvim-lucis",
+  ft = "lucis",
   opts = { lsp = { enabled = false } },  -- disable auto-setup
 },
 {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
-      -- nvim-lux registers the "lux" server config automatically.
+      -- nvim-lucis registers the "lucis" server config automatically.
       -- You just need to reference it here:
-      lux = {},
+      lucis = {},
     },
   },
 },
@@ -104,10 +104,10 @@ built-in LSP setup and configure it manually:
 
 ## Language Server
 
-The LSP server ships inside the Lux compiler:
+The LSP server ships inside the lucis compiler:
 
 ```sh
-lux lsp          # starts the language server on stdin/stdout
+lucis lsp          # starts the language server on stdin/stdout
 ```
 
 Supported LSP features:
@@ -126,10 +126,10 @@ Supported LSP features:
 
 ## Tree-sitter
 
-`queries/lux/highlights.scm` contains highlight queries ready for when a
-compiled `tree-sitter-lux` parser becomes available.
+`queries/lucis/highlights.scm` contains highlight queries ready for when a
+compiled `tree-sitter-lucis` parser becomes available.
 
-Until then, `syntax/lux.vim` provides full Vim-regex-based highlighting with
+Until then, `syntax/lucis.vim` provides full Vim-regex-based highlighting with
 no external dependencies.
 
 ---
